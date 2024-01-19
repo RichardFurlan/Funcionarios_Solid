@@ -38,7 +38,7 @@ namespace Funcionarios_Solid.Models
             return salarioMes + salario;
         }
 
-        public void ToClass(FuncionarioDTO funcionarioDTO)
+        public void MapearDeDTO(FuncionarioDTO funcionarioDTO)
         { 
             Id = funcionarioDTO.Id;
             NomeFuncionario = funcionarioDTO.NomeFuncionario;
@@ -53,7 +53,7 @@ namespace Funcionarios_Solid.Models
             var defineCargo = _defineCargoParaFuncionario.DefineAreaDeAtuacaoDoFuncionario(cargo);
 
             if (defineCargo == null)
-                throw new Exception("Cargo não encontrado");
+                throw new InvalidOperationException("Cargo não definido");
 
             defineCargo.DefinirInformacoesDoFuncionario(this);
         }
